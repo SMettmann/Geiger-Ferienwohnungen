@@ -97,7 +97,7 @@ button{font:inherit}
 .nearby{background:#1d2c26;color:white;padding:115px 0 100px;overflow:hidden}
 .nearby-head{display:grid;grid-template-columns:1.05fr .65fr;gap:100px;align-items:end;margin-bottom:50px}
 .nearby-head>p{color:rgba(255,255,255,.65);max-width:500px;margin:0 0 6px}
-.experience-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,420px);gap:14px;overflow-x:auto;padding:0 max(32px,calc((100vw - 1240px)/2)) 20px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.experience-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,420px);gap:14px;overflow-x:auto;padding:0 max(32px,calc((100vw - 1240px)/2)) 20px;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}
 .experience-card{scroll-snap-align:start;min-height:420px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0;background:#263a32;border:1px solid rgba(255,255,255,.1)}
 .experience-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 20%,rgba(255,255,255,.14),transparent 28%),linear-gradient(145deg,rgba(255,255,255,.03),rgba(0,0,0,.22))}
 .experience-card::after{position:absolute;right:-12px;top:-48px;font-family:"Playfair Display",serif;font-size:190px;line-height:1;color:rgba(255,255,255,.055)}
@@ -184,3 +184,5 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   .experience-card img{height:290px}
   .booking-card h2{font-size:40px}
 }
+
+.experience-rail::-webkit-scrollbar{display:none}
