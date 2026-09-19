@@ -79,6 +79,13 @@ document.querySelectorAll('[data-churwalden-gallery]').forEach(btn=>{
     dialog.showModal();
   });
 });
+document.querySelectorAll('[data-churwalden-gallery]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    activeGallery='churwalden';
+    showImage(Number(btn.dataset.churwaldenGallery));
+    dialog.showModal();
+  });
+});
 document.querySelector('.lightbox-close')?.addEventListener('click',()=>dialog.close());
 document.querySelector('.lightbox-prev')?.addEventListener('click',()=>showImage(active-1));
 document.querySelector('.lightbox-next')?.addEventListener('click',()=>showImage(active+1));
