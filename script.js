@@ -30,6 +30,13 @@ const galleries={
     ['assets/dietlikon-bath.webp','Badezimmer'],
     ['assets/dietlikon-balcony.webp','Balkon'],
     ['assets/dietlikon-dining.webp','Essbereich']
+  ],
+  churwalden:[
+    ['assets/churwalden-living.webp','Wohnbereich'],
+    ['assets/churwalden-bedroom.webp','Familien-Schlafzimmer'],
+    ['assets/churwalden-kitchen.webp','Küche und Essbereich'],
+    ['assets/churwalden-bath.webp','Badezimmer'],
+    ['assets/churwalden-balcony.webp','Balkon']
   ]
 };
 const dialog=document.getElementById('lightbox');
@@ -62,6 +69,13 @@ document.querySelectorAll('[data-dietlikon-gallery]').forEach(btn=>{
   btn.addEventListener('click',()=>{
     activeGallery='dietlikon';
     showImage(Number(btn.dataset.dietlikonGallery));
+    dialog.showModal();
+  });
+});
+document.querySelectorAll('[data-churwalden-gallery]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    activeGallery='churwalden';
+    showImage(Number(btn.dataset.churwaldenGallery));
     dialog.showModal();
   });
 });
