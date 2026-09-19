@@ -20,8 +20,7 @@ const galleries={
     ['assets/zurich-studio-tv.webp','Studio mit TV und Arbeitsfläche'],
     ['assets/zurich-studio-bed.webp','Schlafbereich'],
     ['assets/zurich-kitchen.webp','Küchenzeile'],
-    ['assets/zurich-bath.webp','Duschbad'],
-    ['assets/zurich-coffee.webp','Kaffee- und Küchenausstattung']
+    ['assets/zurich-bath.webp','Duschbad']
   ]
 };
 const dialog=document.getElementById('lightbox');
