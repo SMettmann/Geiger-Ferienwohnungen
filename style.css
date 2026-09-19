@@ -260,9 +260,9 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 
 
 /* Churwalden – gleiche Struktur wie Zürich & Dietlikon */
-.stay-grid{grid-template-rows:390px 390px 360px}
+.stay-grid{grid-template-rows:320px 320px 320px}
+.stay-card-featured{grid-row:span 3}
 .stay-card-churwalden{
-  grid-column:1/-1;
   color:#fff;
   border:0;
   background-image:
@@ -329,7 +329,7 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 
 @media(max-width:900px){
   .stay-grid{grid-template-rows:600px repeat(3,300px)}
-  .stay-card-churwalden{grid-column:auto}
+  .stay-card-featured{grid-row:auto}
   .churwalden-hero{grid-template-columns:1fr;gap:38px}
 }
 @media(max-width:560px){
