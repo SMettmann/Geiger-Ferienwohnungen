@@ -257,3 +257,84 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   .stay-card-dietlikon .stay-content{left:28px;right:28px}
 }
 
+
+
+/* Churwalden – gleiche Struktur wie Zürich & Dietlikon */
+.stay-grid{grid-template-rows:390px 390px 360px}
+.stay-card-churwalden{
+  grid-column:1/-1;
+  color:#fff;
+  border:0;
+  background-image:
+    linear-gradient(0deg,rgba(20,25,21,.72),rgba(20,25,21,.08) 68%),
+    url('assets/churwalden-living.webp');
+  background-size:cover;
+  background-position:center 55%;
+  background-repeat:no-repeat;
+}
+.stay-card-churwalden .stay-content{left:40px;right:40px;bottom:38px}
+.stay-card-churwalden .stay-content p{color:rgba(255,255,255,.82)}
+
+.churwalden-property{background:#ece9e1;padding:110px 0 80px}
+.churwalden-hero{display:grid;grid-template-columns:.88fr 1.12fr;gap:82px;align-items:center}
+.churwalden-copy h2{
+  font-family:"Playfair Display",Georgia,serif;
+  font-weight:500;
+  letter-spacing:-.035em;
+  font-size:clamp(42px,5vw,70px);
+  line-height:1.02;
+  margin:0 0 28px
+}
+.churwalden-copy>p:not(.eyebrow){font-size:16px;color:#50564f;max-width:570px}
+.churwalden-copy .text-link{margin-top:15px}
+.churwalden-hero-photo{
+  padding:0;
+  border:0;
+  background:#d9d3c7;
+  overflow:hidden;
+  cursor:zoom-in;
+  display:block;
+  width:100%;
+  aspect-ratio:4/3
+}
+.churwalden-hero-photo img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.churwalden-hero-photo:hover img{transform:scale(1.025)}
+.churwalden-features{margin-top:82px;margin-bottom:86px}
+.churwalden-gallery{margin-top:0}
+.churwalden-details{padding-top:90px}
+.churwalden-amenities{background:#f7f3eb}
+
+.churwalden-nearby{background:#24302b}
+.churwalden-nearby .experience-card{
+  min-height:500px;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  border-color:rgba(255,255,255,.12)
+}
+.churwalden-nearby .experience-card::before{
+  background:linear-gradient(0deg,rgba(12,20,16,.84),rgba(12,20,16,.08) 70%)
+}
+.churwalden-nearby .experience-card::after{display:none}
+.churwalden-nearby .experience-card>div{min-height:210px}
+.churwalden-nearby .experience-card p{color:rgba(255,255,255,.78)}
+.chur-ski{background-image:url('assets/churwalden-lenzerheide.webp')}
+.chur-nordic{background-image:url('assets/churwalden-winterwald.webp')}
+.chur-village{background-image:url('assets/churwalden-bergdorf.webp')}
+.chur-lake{background-image:url('assets/churwalden-bergsee.webp')}
+.chur-bear{background-image:url('assets/churwalden-panorama.webp')}
+.chur-orma{background-image:url('assets/churwalden-lenzerheide.webp')}
+.chur-buvetta{background-image:url('assets/churwalden-schlucht.webp')}
+.chur-rafting{background-image:url('assets/churwalden-bergsee.webp')}
+
+@media(max-width:900px){
+  .stay-grid{grid-template-rows:600px repeat(3,300px)}
+  .stay-card-churwalden{grid-column:auto}
+  .churwalden-hero{grid-template-columns:1fr;gap:38px}
+}
+@media(max-width:560px){
+  .stay-grid{grid-template-rows:520px repeat(3,270px)}
+  .churwalden-property{padding-top:80px}
+  .churwalden-copy h2{font-size:40px}
+  .stay-card-churwalden .stay-content{left:28px;right:28px}
+}
