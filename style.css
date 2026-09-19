@@ -201,8 +201,6 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 .zurich-photo-button:hover img{transform:scale(1.025)}
 .zurich-hero-photo{aspect-ratio:4/3}
 .zurich-features{margin-top:82px;margin-bottom:86px}
-.zurich-gallery{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-auto-rows:235px;gap:12px}
-.zurich-gallery-main{grid-row:span 2;min-height:482px!important}
 .zurich-details{padding-top:90px}
 .zurich-amenities{background:#f4f1ed}
 .zurich-nearby{background:#252827}
@@ -215,14 +213,11 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 .zurich-nearby .city-rhine{background:linear-gradient(145deg,#3b5555,#263131)}
 @media(max-width:900px){
   .zurich-hero{grid-template-columns:1fr;gap:38px}
-  .zurich-gallery{grid-template-columns:1fr 1fr}
-  .zurich-gallery-main{grid-column:span 2;min-height:420px!important}
 }
 @media(max-width:560px){
   .zurich-property{padding-top:80px}
   .zurich-copy h2{font-size:40px}
-  .zurich-gallery{grid-template-columns:1fr}
-  .zurich-gallery-main{grid-column:auto;min-height:300px!important}
-  .zurich-gallery .zurich-photo-button{min-height:260px}
   .stay-card-zurich .stay-content{left:28px;right:28px}
 }
+
+.zurich-gallery{margin-top:0}
