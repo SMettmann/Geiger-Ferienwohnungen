@@ -264,7 +264,7 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   border:0;
   background-image:
     linear-gradient(0deg,rgba(13,22,18,.72),rgba(13,22,18,.10) 68%),
-    url('https://arosalenzerheide.swiss/1-content-hauptseiten/02_lenzerheide/04_landschaften_regionen/vaz-obervaz/21578161/image-thumb__21578161__img-teaser/churwalden-graubuenden-ferienregion-lenzerheide-sommer%402x.828c7504.jpg');
+    url('assets/churwalden-bergdorf.webp');
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -280,7 +280,7 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   align-items:flex-end;
   overflow:hidden;
   color:#fff;
-  background-image:url('https://arosalenzerheide.swiss/1-content-hauptseiten/02_lenzerheide/04_landschaften_regionen/vaz-obervaz/21578161/image-thumb__21578161__img-teaser/churwalden-graubuenden-ferienregion-lenzerheide-sommer%402x.828c7504.jpg');
+  background-image:url('assets/churwalden-bergdorf.webp');
   background-size:cover;
   background-position:center 48%;
 }
@@ -342,16 +342,16 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 .churwalden-nearby .experience-card p{color:rgba(255,255,255,.82)}
 
 .chur-ski{
-  background-image:url('https://arosalenzerheide.swiss/1-content-hauptseiten/01_arosa/03_aktivitaeten/01_winter/01_ski-snowboard/1267733/image-thumb__1267733__img-teaser/Novemberhoch-1%402x.08289358.png');
+  background-image:url('assets/churwalden-lenzerheide.webp');
 }
 .chur-nordic{
-  background-image:url('https://arosalenzerheide.swiss/1-content-hauptseiten/02_lenzerheide/03_aktivitaeten/01_winter/04_langlauf/1659032/image-thumb__1659032__jsonLd/langlauf-lenzerheide-im-wald.8520854e.png');
+  background-image:url('assets/churwalden-winterwald.webp');
 }
 .chur-village{
-  background-image:url('https://arosalenzerheide.swiss/1-content-hauptseiten/02_lenzerheide/04_landschaften_regionen/vaz-obervaz/21578161/image-thumb__21578161__img-teaser/churwalden-graubuenden-ferienregion-lenzerheide-sommer%402x.828c7504.jpg');
+  background-image:url('assets/churwalden-bergdorf.webp');
 }
 .chur-lake{
-  background-image:url('https://vcdn.bergfex.at/images/resized/profiles/detail/d7c/da867c25b1d191ecf60ca355ccf8ed7c.jpg');
+  background-image:url('assets/churwalden-bergsee.webp');
 }
 .chur-bear{
   background-image:url('https://www.graubuenden.ch/sites/graubuenden/files/styles/medium_teaser/public/2022-10/sehenswuerdigkeit-arosa-baerenland-plattform.jpg?h=c3635fa2');
@@ -360,10 +360,10 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   background-image:url('https://api.engadin.ch/fileadmin/_processed_/8/4/csm_9_orma.1_8bd92a8e10.jpg');
 }
 .chur-buvetta{
-  background-image:url('https://www.engadin.com/sites/engadin/files/styles/hero_large/public/2021-08/trinkhalle_buevetta_in_nairs_im_sommer_c_dominik_taeuber.jpg?h=c6980913&itok=Dkv0OJCq');
+  background-image:url('assets/churwalden-schlucht.webp');
 }
 .chur-rafting{
-  background-image:url('https://checkyeti.imgix.net/images/prod/products/7338/rafting-youth-group.jpg');
+  background-image:url('assets/churwalden-panorama.webp');
 }
 
 @media(max-width:900px){
