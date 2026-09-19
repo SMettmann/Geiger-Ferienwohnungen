@@ -221,3 +221,38 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 }
 
 .zurich-gallery{margin-top:0}
+
+.stay-card-dietlikon{color:#fff;border:0;background-image:linear-gradient(0deg,rgba(20,24,21,.72),rgba(20,24,21,.08) 68%),url('assets/dietlikon-living.webp');background-size:cover;background-position:center;background-repeat:no-repeat}
+.stay-card-dietlikon .stay-content{left:35px;right:35px;bottom:32px}
+.stay-card-dietlikon .stay-content p{color:rgba(255,255,255,.82)}
+
+.dietlikon-property{background:#f1ede5;padding:110px 0 80px}
+.dietlikon-hero{display:grid;grid-template-columns:.88fr 1.12fr;gap:82px;align-items:center}
+.dietlikon-copy h2{font-family:"Playfair Display",Georgia,serif;font-weight:500;letter-spacing:-.035em;font-size:clamp(42px,5vw,70px);line-height:1.02;margin:0 0 28px}
+.dietlikon-copy>p:not(.eyebrow){font-size:16px;color:#50564f;max-width:570px}
+.dietlikon-copy .text-link{margin-top:15px}
+.dietlikon-hero-photo{padding:0;border:0;background:#ddd7cb;overflow:hidden;cursor:zoom-in;display:block;width:100%;aspect-ratio:4/3}
+.dietlikon-hero-photo img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.dietlikon-hero-photo:hover img{transform:scale(1.025)}
+.dietlikon-features{margin-top:82px;margin-bottom:86px}
+.dietlikon-gallery{margin-top:0}
+.dietlikon-details{padding-top:90px}
+.dietlikon-amenities{background:#faf7f1}
+
+.dietlikon-nearby{background:#302f29}
+.dietlikon-nearby .experience-card{background:#35342e}
+.dietlikon-nearby .diet-airport{background:linear-gradient(145deg,#4b514f,#2e312f)}
+.dietlikon-nearby .diet-city{background:linear-gradient(145deg,#3b4b50,#282f31)}
+.dietlikon-nearby .diet-messe{background:linear-gradient(145deg,#4f463b,#302b27)}
+.dietlikon-nearby .diet-shopping{background:linear-gradient(145deg,#575044,#33302a)}
+.dietlikon-nearby .diet-transit{background:linear-gradient(145deg,#3f4b43,#2a312d)}
+.dietlikon-nearby .diet-quiet{background:linear-gradient(145deg,#46463f,#2d2d29)}
+
+@media(max-width:900px){
+  .dietlikon-hero{grid-template-columns:1fr;gap:38px}
+}
+@media(max-width:560px){
+  .dietlikon-property{padding-top:80px}
+  .dietlikon-copy h2{font-size:40px}
+  .stay-card-dietlikon .stay-content{left:28px;right:28px}
+}
