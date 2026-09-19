@@ -98,12 +98,20 @@ button{font:inherit}
 .nearby-head{display:grid;grid-template-columns:1.05fr .65fr;gap:100px;align-items:end;margin-bottom:50px}
 .nearby-head>p{color:rgba(255,255,255,.65);max-width:500px;margin:0 0 6px}
 .experience-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,420px);gap:14px;overflow-x:auto;padding:0 max(32px,calc((100vw - 1240px)/2)) 20px;scroll-snap-type:x mandatory;scrollbar-width:thin}
-.experience-card{scroll-snap-align:start;background:#263a32;min-height:520px}
-.experience-card img{height:335px;object-fit:cover}
-.experience-card>div{padding:24px 25px}
-.experience-card span{font-size:10px;opacity:.5}
-.experience-card h3{font-family:"Playfair Display",serif;font-weight:500;font-size:27px;margin:5px 0 9px}
-.experience-card p{font-size:13px;color:rgba(255,255,255,.66);margin:0}
+.experience-card{scroll-snap-align:start;min-height:420px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0;background:#263a32;border:1px solid rgba(255,255,255,.1)}
+.experience-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 20%,rgba(255,255,255,.14),transparent 28%),linear-gradient(145deg,rgba(255,255,255,.03),rgba(0,0,0,.22))}
+.experience-card::after{position:absolute;right:-12px;top:-48px;font-family:"Playfair Display",serif;font-size:190px;line-height:1;color:rgba(255,255,255,.055)}
+.experience-card:nth-child(1)::after{content:"01"}.experience-card:nth-child(2)::after{content:"02"}.experience-card:nth-child(3)::after{content:"03"}.experience-card:nth-child(4)::after{content:"04"}.experience-card:nth-child(5)::after{content:"05"}.experience-card:nth-child(6)::after{content:"06"}
+.experience-card>div{position:relative;z-index:1;padding:34px 30px;min-height:210px;display:flex;flex-direction:column;justify-content:flex-end}
+.experience-card span{font-size:10px;opacity:.5;letter-spacing:.16em}
+.experience-card h3{font-family:"Playfair Display",serif;font-weight:500;font-size:31px;line-height:1.08;margin:8px 0 12px}
+.experience-card p{font-size:13px;color:rgba(255,255,255,.66);margin:0;max-width:300px}
+.exp-lake{background:linear-gradient(145deg,#284e58,#18302f)}
+.exp-lindt{background:linear-gradient(145deg,#59412f,#2c2d27)}
+.exp-city{background:linear-gradient(145deg,#4a453f,#262f2b)}
+.exp-steg{background:linear-gradient(145deg,#31515a,#243c3d)}
+.exp-hill{background:linear-gradient(145deg,#394a3e,#1d2924)}
+.exp-zurich{background:linear-gradient(145deg,#354b51,#24312e)}
 .booking{padding:120px 0;display:grid;grid-template-columns:1fr 1fr;min-height:600px}
 .booking-card{background:#ebe4d8;padding:68px;display:flex;flex-direction:column;justify-content:center}
 .booking-card h2{font-size:58px}
