@@ -21,6 +21,15 @@ const galleries={
     ['assets/zurich-studio-bed.webp','Schlafbereich'],
     ['assets/zurich-kitchen.webp','Küchenzeile'],
     ['assets/zurich-bath.webp','Duschbad']
+  ],
+  dietlikon:[
+    ['assets/dietlikon-living.webp','Wohn- und Essbereich'],
+    ['assets/dietlikon-bedroom-1.webp','Schlafzimmer 1'],
+    ['assets/dietlikon-bedroom-2.webp','Schlafzimmer 2'],
+    ['assets/dietlikon-kitchen.webp','Küche'],
+    ['assets/dietlikon-bath.webp','Badezimmer'],
+    ['assets/dietlikon-balcony.webp','Balkon'],
+    ['assets/dietlikon-dining.webp','Essbereich']
   ]
 };
 const dialog=document.getElementById('lightbox');
@@ -46,6 +55,13 @@ document.querySelectorAll('[data-zurich-gallery]').forEach(btn=>{
   btn.addEventListener('click',()=>{
     activeGallery='zurich';
     showImage(Number(btn.dataset.zurichGallery));
+    dialog.showModal();
+  });
+});
+document.querySelectorAll('[data-dietlikon-gallery]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    activeGallery='dietlikon';
+    showImage(Number(btn.dataset.dietlikonGallery));
     dialog.showModal();
   });
 });
