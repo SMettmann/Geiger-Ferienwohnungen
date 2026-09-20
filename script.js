@@ -96,3 +96,54 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight')showImage(active+1);
 });
 
+
+
+// Stabilize Smoobu iframe height
+function stabilizeSmoobuIframe(targetSelector){
+  const target=document.querySelector(targetSelector);
+  if(!target)return;
+
+  const bindIframe=(iframe)=>{
+    if(!iframe || iframe.dataset.heightStabilized==='true')return;
+    iframe.dataset.heightStabilized='true';
+
+    let maxHeight=0;
+    let scheduled=false;
+
+    const stabilize=()=>{
+      scheduled=false;
+      const current=Math.ceil(iframe.getBoundingClientRect().height || parseFloat(iframe.style.height) || 0);
+      if(current>maxHeight){
+        maxHeight=current;
+        iframe.style.minHeight=maxHeight+'px';
+      }
+    };
+
+    const schedule=()=>{
+      if(scheduled)return;
+      scheduled=true;
+      requestAnimationFrame(stabilize);
+    };
+
+    const heightObserver=new MutationObserver(schedule);
+    heightObserver.observe(iframe,{
+      attributes:true,
+      attributeFilter:['style','height']
+    });
+
+    iframe.addEventListener('load',()=>{
+      setTimeout(schedule,80);
+      setTimeout(schedule,350);
+    });
+
+    schedule();
+  };
+
+  const findIframe=()=>bindIframe(target.querySelector('iframe'));
+  findIframe();
+
+  const childObserver=new MutationObserver(findIframe);
+  childObserver.observe(target,{childList:true,subtree:true});
+}
+
+stabilizeSmoobuIframe('#apartmentIframeKilchbergSearch');
