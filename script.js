@@ -116,3 +116,31 @@ document.addEventListener('keydown',e=>{
 
 
 
+
+
+// Expand Smoobu iframe when focus enters the embedded booking form
+(function(){
+  const activateSmoobuFrame=()=>{
+    const active=document.activeElement;
+    if(!active || active.tagName!=='IFRAME')return;
+
+    const shell=active.closest('.direct-booking-native');
+    if(!shell)return;
+
+    shell.classList.add('smoobu-active');
+  };
+
+  // Clicking inside a cross-origin iframe moves focus to the iframe element
+  // in the parent page. The parent window emits blur at that moment.
+  window.addEventListener('blur',()=>{
+    setTimeout(activateSmoobuFrame,0);
+  });
+
+  // Fallback for browsers that expose iframe focus directly.
+  document.addEventListener('focusin',event=>{
+    if(event.target?.tagName==='IFRAME'){
+      const shell=event.target.closest('.direct-booking-native');
+      shell?.classList.add('smoobu-active');
+    }
+  });
+})();
