@@ -346,7 +346,6 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 @media(max-width:560px){
   .property-place{gap:10px;margin-bottom:20px;padding-bottom:12px}
   .property-place strong,.property-place span{font-size:24px}
-  .property-place span{font-size:8px}
 }
 
 
