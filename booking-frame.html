@@ -51,13 +51,23 @@
     };
     document.head.appendChild(smoobuScript);
 
-    const sendHeight=()=>{
+    let lastSentHeight=0;
+    const HEIGHT_DEADBAND=48;
+
+    const sendHeight=(force=false)=>{
       requestAnimationFrame(()=>{
         const frame=getChildFrame();
         const height=frame
           ? Math.max(220,Math.ceil(frame.getBoundingClientRect().height))
           : 220;
 
+        // Smoobu changes the iframe by a few pixels when amenity tooltips appear.
+        // Ignore those tiny hover-only changes so the white booking box stays still.
+        if(!force && lastSentHeight && Math.abs(height-lastSentHeight)<HEIGHT_DEADBAND){
+          return;
+        }
+
+        lastSentHeight=height;
         parent.postMessage({
           type:'smoobu-height',
           property,
@@ -87,8 +97,8 @@
       });
 
       frame.addEventListener('load',()=>{
-        setTimeout(sendHeight,80);
-        setTimeout(sendHeight,350);
+        setTimeout(()=>sendHeight(true),80);
+        setTimeout(()=>sendHeight(true),350);
       });
 
       sendHeight();
@@ -112,12 +122,12 @@
       if(event.origin!==location.origin)return;
       if(event.data?.type==='smoobu-reset'){
         document.body.classList.remove('calendar-open');
-        sendHeight();
+        sendHeight(true);
       }
     });
 
     new ResizeObserver(sendHeight).observe(document.body);
-    window.addEventListener('load',sendHeight);
+    window.addEventListener('load',()=>sendHeight(true));
   </script>
 </body>
 </html>
