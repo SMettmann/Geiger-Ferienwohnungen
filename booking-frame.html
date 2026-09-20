@@ -52,7 +52,7 @@
     document.head.appendChild(smoobuScript);
 
     let lastSentHeight=0;
-    const HEIGHT_DEADBAND=48;
+    const COMPACT_LIMIT=500;
 
     const sendHeight=(force=false)=>{
       requestAnimationFrame(()=>{
@@ -61,12 +61,18 @@
           ? Math.max(220,Math.ceil(frame.getBoundingClientRect().height))
           : 220;
 
-        // Smoobu changes the iframe by a few pixels when amenity tooltips appear.
-        // Ignore those tiny hover-only changes so the white booking box stays still.
-        if(!force && lastSentHeight && Math.abs(height-lastSentHeight)<HEIGHT_DEADBAND){
+        const wasCompact=lastSentHeight>0 && lastSentHeight<COMPACT_LIMIT;
+        const isCompact=height<COMPACT_LIMIT;
+
+        // While the widget is in its compact search state, Smoobu can change
+        // its own iframe height when amenity tooltips appear on hover.
+        // Keep our outer frame completely fixed in that state.
+        if(!force && wasCompact && isCompact){
           return;
         }
 
+        // A real transition (calendar/booking opens or closes) crosses the
+        // compact/expanded boundary and is still allowed through.
         lastSentHeight=height;
         parent.postMessage({
           type:'smoobu-height',
@@ -86,7 +92,10 @@
       const syncFromSmoobu=()=>{
         const h=parseFloat(frame.style.height)||parseFloat(frame.getAttribute('height'))||0;
         if(h>0 && h<380){
+          const wasOpen=document.body.classList.contains('calendar-open');
           document.body.classList.remove('calendar-open');
+          sendHeight(wasOpen);
+          return;
         }
         sendHeight();
       };
