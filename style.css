@@ -831,3 +831,22 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   max-height:430px;
   overflow:hidden;
 }
+
+
+/* Brand interaction */
+.brand{
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+  caret-color:transparent;
+}
+
+.brand:focus:not(:focus-visible){
+  outline:none;
+}
+
+.brand:focus-visible{
+  outline:2px solid rgba(41,64,42,.55);
+  outline-offset:6px;
+  border-radius:4px;
+}
