@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260920-28">
+  <link rel="stylesheet" href="style.css?v=20260920-29">
   <!-- pages-refresh-20260920-2 -->
 </head>
 <body>
@@ -28,7 +28,7 @@
       <a href="#dietlikon">Dietlikon</a>
       <a href="#churwalden">Churwalden</a>
       <a href="#ueber-uns">Über uns</a>
-      <a href="#kontakt">Kontakt</a>
+      <a href="#kontakt" data-contact-open>Kontakt</a>
     </nav>
   </header>
 
@@ -561,7 +561,7 @@
       </div>
     </section>
 
-    <section class="booking section" id="kontakt">
+    <section class="booking section" id="buchung">
       <div class="booking-card">
         <p class="eyebrow">DEIN AUFENTHALT</p>
         <h2>Welche Unterkunft passt zu deiner Reise?</h2>
@@ -592,6 +592,65 @@
     </div>
   </footer>
 
+
+  <dialog class="contact-dialog" id="kontakt" aria-labelledby="contact-title">
+    <div class="contact-dialog-shell">
+      <button class="contact-dialog-close" type="button" aria-label="Kontaktformular schließen">×</button>
+
+      <div class="contact-dialog-intro">
+        <p class="eyebrow">KONTAKT</p>
+        <h2 id="contact-title">Wie können wir helfen?</h2>
+        <p>Schreib uns kurz, worum es geht. Für Verfügbarkeit und Preise nutzt du am besten direkt den Kalender der jeweiligen Unterkunft.</p>
+      </div>
+
+      <form class="contact-form" id="contact-form">
+        <div class="contact-form-row">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            <span>E-Mail</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+        </div>
+
+        <div class="contact-form-row">
+          <label>
+            <span>Telefon <small>optional</small></span>
+            <input type="tel" name="phone" autocomplete="tel">
+          </label>
+          <label>
+            <span>Unterkunft</span>
+            <select name="property">
+              <option value="">Bitte auswählen</option>
+              <option>Kilchberg</option>
+              <option>Zürich</option>
+              <option>Dietlikon</option>
+              <option>Churwalden</option>
+              <option>Allgemeine Anfrage</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="contact-message">
+          <span>Nachricht</span>
+          <textarea name="message" rows="5" required placeholder="Wie können wir dir helfen?"></textarea>
+        </label>
+
+        <label class="contact-consent">
+          <input type="checkbox" name="privacy" required>
+          <span>Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden.</span>
+        </label>
+
+        <div class="contact-form-footer">
+          <button class="btn btn-dark contact-submit" type="submit">Nachricht senden</button>
+          <p class="contact-form-status" id="contact-form-status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
   <dialog class="lightbox" id="lightbox">
     <button class="lightbox-close" aria-label="Galerie schließen">×</button>
     <button class="lightbox-prev" aria-label="Vorheriges Bild">←</button>
@@ -599,6 +658,6 @@
     <button class="lightbox-next" aria-label="Nächstes Bild">→</button>
     <span id="lightbox-counter"></span>
   </dialog>
-  <script src="script.js?v=20260920-16"></script>
+  <script src="script.js?v=20260920-17"></script>
 </body>
 </html>
