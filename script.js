@@ -1,3 +1,23 @@
+// Always start at the top after reload/navigation restoration
+if('scrollRestoration' in history){
+  history.scrollRestoration='manual';
+}
+
+const forcePageTop=()=>{
+  window.scrollTo(0,0);
+};
+
+window.addEventListener('pageshow',()=>{
+  forcePageTop();
+  requestAnimationFrame(forcePageTop);
+  setTimeout(forcePageTop,60);
+});
+
+window.addEventListener('load',()=>{
+  forcePageTop();
+  setTimeout(forcePageTop,120);
+});
+
 const menuButton=document.querySelector('.menu-toggle');
 const nav=document.querySelector('.main-nav');
 menuButton?.addEventListener('click',()=>{
