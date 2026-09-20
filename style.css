@@ -96,11 +96,14 @@ button{font:inherit}
 .details{padding:100px 0 40px;display:grid;grid-template-columns:1fr .85fr;gap:110px}
 .details-copy h2{font-size:52px}
 .details-copy>p:not(.eyebrow){max-width:620px;font-size:16px;color:#4f5651}
-.amenities{background:var(--paper);padding:34px}
+.amenities{background:var(--paper);padding:34px;cursor:default;user-select:none;-webkit-user-select:none}
 .amenities h3{font-family:"Playfair Display",serif;font-size:28px;margin:0 0 24px;font-weight:500}
 .amenity-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
 .amenity-grid span{padding:12px 4px;border-bottom:1px solid var(--line);font-size:13px;cursor:default}
 .amenities small{display:block;color:var(--muted);margin-top:18px}
+.amenities *{cursor:inherit}
+.amenities:hover,
+.amenities *:hover{transform:none!important}
 .nearby{background:#1d2c26;color:white;padding:115px 0 100px;overflow:hidden}
 .nearby-head{display:grid;grid-template-columns:1.05fr .65fr;gap:100px;align-items:end;margin-bottom:50px}
 .nearby-head>p{color:rgba(255,255,255,.65);max-width:500px;margin:0 0 6px}
