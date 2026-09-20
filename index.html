@@ -194,8 +194,6 @@
 
       <div class="smoobu-booking-shell" aria-label="Direktbuchung Kilchberg">
         <div id="apartmentIframeKilchbergSearch">
-          <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
-          <script>BookingToolIframe.initialize({"url": "https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3220877", "baseUrl": "https://login.smoobu.com", "target": "#apartmentIframeKilchbergSearch"})</script>
         </div>
       </div>
       <p class="booking-sync-note">Verfügbarkeit und Preise werden über Smoobu bzw. die angebundenen Systeme aktualisiert.</p>
@@ -300,8 +298,6 @@
 
       <div class="smoobu-booking-shell" aria-label="Direktbuchung Zürich City">
         <div id="apartmentIframeZurichSearch">
-          <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
-          <script>BookingToolIframe.initialize({"url": "https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3220882", "baseUrl": "https://login.smoobu.com", "target": "#apartmentIframeZurichSearch"})</script>
         </div>
       </div>
       <p class="booking-sync-note">Verfügbarkeit und Preise werden über Smoobu bzw. die angebundenen Systeme aktualisiert.</p>
@@ -493,8 +489,6 @@
 
       <div class="smoobu-booking-shell" aria-label="Direktbuchung Churwalden">
         <div id="apartmentIframeChurwaldenSearch">
-          <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
-          <script>BookingToolIframe.initialize({"url": "https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3419581", "baseUrl": "https://login.smoobu.com", "target": "#apartmentIframeChurwaldenSearch"})</script>
         </div>
       </div>
       <p class="booking-sync-note">Verfügbarkeit und Preise werden über Smoobu bzw. die angebundenen Systeme aktualisiert.</p>
@@ -603,6 +597,12 @@
     <span id="lightbox-counter"></span>
   </dialog>
 
-  <script src="script.js?v=20260920-8"></script>
+  <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
+  <script>
+    BookingToolIframe.initialize({"url":"https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3220877","baseUrl":"https://login.smoobu.com","target":"#apartmentIframeKilchbergSearch"});
+    BookingToolIframe.initialize({"url":"https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3220882","baseUrl":"https://login.smoobu.com","target":"#apartmentIframeZurichSearch"});
+    BookingToolIframe.initialize({"url":"https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3419581","baseUrl":"https://login.smoobu.com","target":"#apartmentIframeChurwaldenSearch"});
+  </script>
+  <script src="script.js?v=20260920-9"></script>
 </body>
 </html>
