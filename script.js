@@ -167,3 +167,42 @@ document.addEventListener('keydown',e=>{
     });
   });
 })();
+
+
+// Contact modal
+(function(){
+  const dialog=document.getElementById('kontakt');
+  const form=document.getElementById('contact-form');
+  const status=document.getElementById('contact-form-status');
+
+  document.querySelectorAll('[data-contact-open]').forEach(link=>{
+    link.addEventListener('click',event=>{
+      event.preventDefault();
+      nav?.classList.remove('open');
+      menuButton?.setAttribute('aria-expanded','false');
+      dialog?.showModal();
+    });
+  });
+
+  dialog?.querySelector('.contact-dialog-close')?.addEventListener('click',()=>{
+    dialog.close();
+  });
+
+  dialog?.addEventListener('click',event=>{
+    const box=dialog.getBoundingClientRect();
+    const outside=
+      event.clientX<box.left ||
+      event.clientX>box.right ||
+      event.clientY<box.top ||
+      event.clientY>box.bottom;
+
+    if(outside) dialog.close();
+  });
+
+  form?.addEventListener('submit',event=>{
+    event.preventDefault();
+    if(status){
+      status.textContent='Das Formular ist fertig gestaltet. Die Empfängeradresse für den Versand wird noch hinterlegt.';
+    }
+  });
+})();
