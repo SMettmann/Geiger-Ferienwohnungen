@@ -315,26 +315,21 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 
 .churwalden-nearby{background:#24302b}
 .churwalden-nearby .experience-card{
-  min-height:500px;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  border-color:rgba(255,255,255,.12)
+  min-height:420px;
+  border-color:rgba(255,255,255,.1)
 }
 .churwalden-nearby .experience-card::before{
-  background:linear-gradient(0deg,rgba(12,20,16,.84),rgba(12,20,16,.08) 70%)
+  background:radial-gradient(circle at 78% 20%,rgba(255,255,255,.14),transparent 28%),linear-gradient(145deg,rgba(255,255,255,.03),rgba(0,0,0,.22))
 }
-.churwalden-nearby .experience-card::after{display:none}
+.churwalden-nearby .experience-card::after{display:block}
 .churwalden-nearby .experience-card>div{min-height:210px}
-.churwalden-nearby .experience-card p{color:rgba(255,255,255,.78)}
-.chur-ski{background-image:url('assets/churwalden-lenzerheide.webp')}
-.chur-nordic{background-image:url('assets/churwalden-winterwald.webp')}
-.chur-village{background-image:url('assets/churwalden-bergdorf.webp')}
-.chur-lake{background-image:url('assets/churwalden-bergsee.webp')}
-.chur-bear{background-image:url('assets/churwalden-panorama.webp')}
-.chur-orma{background-image:url('assets/churwalden-lenzerheide.webp')}
-.chur-buvetta{background-image:url('assets/churwalden-schlucht.webp')}
-.chur-rafting{background-image:url('assets/churwalden-bergsee.webp')}
+.churwalden-nearby .experience-card p{color:rgba(255,255,255,.66)}
+.chur-ski{background:linear-gradient(145deg,#31515a,#243c3d)}
+.chur-nordic{background:linear-gradient(145deg,#394a3e,#1d2924)}
+.chur-village{background:linear-gradient(145deg,#4a453f,#262f2b)}
+.chur-lake{background:linear-gradient(145deg,#284e58,#18302f)}
+.chur-bear{background:linear-gradient(145deg,#35483d,#1f2b26)}
+.chur-orma{background:linear-gradient(145deg,#354b51,#24312e)}
 
 @media(max-width:900px){
   .stay-grid{grid-template-rows:600px repeat(3,300px)}
