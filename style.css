@@ -474,3 +474,10 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   .property-chapter-region{font-size:8px}
   .property-chapter-note{display:none}
 }
+
+
+/* Legacy property divider hard-disable */
+.property-divider,
+.property-divider-inner{
+  display:none !important;
+}
