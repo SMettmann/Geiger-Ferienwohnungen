@@ -825,13 +825,6 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   height:auto;
 }
 
-/* Keep Smoobu's initial empty area compact.
-   JavaScript only changes this outer wrapper, never the Smoobu iframe itself. */
-.smoobu-booking-shell.smoobu-height-capped{
-  max-height:430px;
-  overflow:hidden;
-}
-
 
 /* Brand interaction */
 .brand{
@@ -849,4 +842,17 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   outline:2px solid rgba(41,64,42,.55);
   outline-offset:6px;
   border-radius:4px;
+}
+
+
+/* Never clip Smoobu controls */
+.smoobu-booking-shell{
+  max-height:none !important;
+  overflow:visible !important;
+}
+
+.smoobu-booking-shell > div,
+.smoobu-booking-shell iframe{
+  max-height:none !important;
+  overflow:visible;
 }
