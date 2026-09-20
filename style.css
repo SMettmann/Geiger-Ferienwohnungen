@@ -789,7 +789,7 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 }
 
 
-/* Expand Smoobu iframe while interacting */
+/* Expand Smoobu iframe when the visitor starts interacting with it */
 .direct-booking-native iframe{
   display:block;
   width:100% !important;
@@ -797,12 +797,12 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   border:0;
 }
 
-.direct-booking-native iframe:focus{
-  min-height:560px !important;
+.direct-booking-native.smoobu-active iframe{
+  min-height:640px !important;
 }
 
 @media(max-width:760px){
-  .direct-booking-native iframe:focus{
-    min-height:620px !important;
+  .direct-booking-native.smoobu-active iframe{
+    min-height:720px !important;
   }
 }
