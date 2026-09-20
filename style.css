@@ -789,30 +789,22 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 }
 
 
-/* Independent Smoobu embeds */
+/* Isolated Smoobu booking documents */
 .direct-booking-native{
   overflow:visible;
 }
 
-.smoobu-frame{
+.smoobu-host-frame{
   display:block;
   width:100%;
-  height:220px;
+  height:240px;
   border:0;
-  transition:height .2s ease;
   background:#fff;
-}
-
-.direct-booking-native.smoobu-active .smoobu-frame{
-  height:1000px;
+  transition:height .18s ease;
 }
 
 @media(max-width:760px){
-  .smoobu-frame{
-    height:250px;
-  }
-
-  .direct-booking-native.smoobu-active .smoobu-frame{
-    height:1150px;
+  .smoobu-host-frame{
+    height:270px;
   }
 }
