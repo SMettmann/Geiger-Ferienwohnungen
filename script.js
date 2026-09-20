@@ -7,6 +7,24 @@ menuButton?.addEventListener('click',()=>{
 nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 document.getElementById('year').textContent=new Date().getFullYear();
 
+// Brand scroll-to-top without leaving #top in the URL
+document.querySelectorAll('.brand[href="#top"]').forEach(brand=>{
+  brand.addEventListener('click',event=>{
+    event.preventDefault();
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(location.hash==='#top'){
+      history.replaceState(null,'',location.pathname+location.search);
+    }
+    brand.blur();
+  });
+});
+
+// If a previous logo click left #top in the address, clean it on reload as well.
+if(location.hash==='#top'){
+  history.replaceState(null,'',location.pathname+location.search);
+  window.scrollTo(0,0);
+}
+
 const galleries={
   kilchberg:[
     ['https://a0.muscache.com/im/pictures/hosting/Hosting-1640774749513849269/original/aaef4c64-34a1-4601-b5ea-7457669fb338.jpeg?im_w=1200','Wohnbereich'],
