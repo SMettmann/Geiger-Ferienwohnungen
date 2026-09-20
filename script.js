@@ -118,29 +118,33 @@ document.addEventListener('keydown',e=>{
 
 
 
-// Expand Smoobu iframe when focus enters the embedded booking form
+
+// Independent Smoobu iframe handling
 (function(){
-  const activateSmoobuFrame=()=>{
-    const active=document.activeElement;
-    if(!active || active.tagName!=='IFRAME')return;
+  const frames=[...document.querySelectorAll('.smoobu-frame')];
 
-    const shell=active.closest('.direct-booking-native');
+  const activateFrame=(frame)=>{
+    if(!frame || !frame.classList.contains('smoobu-frame'))return;
+    const shell=frame.closest('.direct-booking-native');
     if(!shell)return;
-
     shell.classList.add('smoobu-active');
   };
 
-  // Clicking inside a cross-origin iframe moves focus to the iframe element
-  // in the parent page. The parent window emits blur at that moment.
+  // Each iframe is a separate browsing context. When focus enters one of them,
+  // document.activeElement points to exactly that iframe.
   window.addEventListener('blur',()=>{
-    setTimeout(activateSmoobuFrame,0);
+    setTimeout(()=>{
+      const active=document.activeElement;
+      if(active?.tagName==='IFRAME' && active.classList.contains('smoobu-frame')){
+        activateFrame(active);
+      }
+    },0);
   });
 
-  // Fallback for browsers that expose iframe focus directly.
-  document.addEventListener('focusin',event=>{
-    if(event.target?.tagName==='IFRAME'){
-      const shell=event.target.closest('.direct-booking-native');
-      shell?.classList.add('smoobu-active');
-    }
+  frames.forEach(frame=>{
+    frame.addEventListener('load',()=>{
+      // Keep every widget independent; loading one never changes another.
+      frame.dataset.ready='true';
+    });
   });
 })();
