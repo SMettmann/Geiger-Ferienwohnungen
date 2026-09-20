@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smoobu Buchung</title>
+  <style>
+    html,body{margin:0;padding:0;background:transparent;overflow:hidden}
+    body{font-family:Arial,sans-serif}
+    #bookingTarget{width:100%}
+    #bookingTarget iframe{
+      display:block;
+      width:100%!important;
+      max-width:100%!important;
+      border:0!important;
+      background:#fff;
+    }
+    body.calendar-open #bookingTarget iframe{
+      min-height:620px!important;
+    }
+    @media(max-width:760px){
+      body.calendar-open #bookingTarget iframe{
+        min-height:720px!important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="bookingTarget"></div>
+
+  <script>
+    const allowed=new Set(['3220877','3319157','3419581']);
+    const params=new URLSearchParams(location.search);
+    const property=params.get('property');
+
+    if(!allowed.has(property)){
+      document.body.textContent='Buchung konnte nicht geladen werden.';
+      throw new Error('Invalid property');
+    }
+
+    const target=document.getElementById('bookingTarget');
+    const smoobuScript=document.createElement('script');
+    smoobuScript.src='https://login.smoobu.com/js/Settings/BookingToolIframe.js';
+    smoobuScript.onload=()=>{
+      BookingToolIframe.initialize({
+        url:'https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]='+property,
+        baseUrl:'https://login.smoobu.com',
+        target:'#bookingTarget'
+      });
+      bindSmoobuFrame();
+    };
+    document.head.appendChild(smoobuScript);
+
+    const sendHeight=()=>{
+      requestAnimationFrame(()=>{
+        const height=Math.max(
+          220,
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight
+        );
+        parent.postMessage({
+          type:'smoobu-height',
+          property,
+          height
+        }, location.origin);
+      });
+    };
+
+    const getChildFrame=()=>target.querySelector('iframe');
+
+    const bindSmoobuFrame=()=>{
+      const frame=getChildFrame();
+      if(!frame || frame.dataset.bound==='true')return;
+      frame.dataset.bound='true';
+
+      const syncFromSmoobu=()=>{
+        const h=parseFloat(frame.style.height)||parseFloat(frame.getAttribute('height'))||0;
+        if(h>0 && h<380){
+          document.body.classList.remove('calendar-open');
+        }
+        sendHeight();
+      };
+
+      new MutationObserver(syncFromSmoobu).observe(frame,{
+        attributes:true,
+        attributeFilter:['style','height']
+      });
+
+      frame.addEventListener('load',()=>{
+        setTimeout(sendHeight,80);
+        setTimeout(sendHeight,350);
+      });
+
+      sendHeight();
+    };
+
+    new MutationObserver(()=>{
+      bindSmoobuFrame();
+      sendHeight();
+    }).observe(target,{childList:true,subtree:true});
+
+    window.addEventListener('blur',()=>{
+      setTimeout(()=>{
+        if(document.activeElement===getChildFrame()){
+          document.body.classList.add('calendar-open');
+          sendHeight();
+        }
+      },0);
+    });
+
+    window.addEventListener('message',event=>{
+      if(event.origin!==location.origin)return;
+      if(event.data?.type==='smoobu-reset'){
+        document.body.classList.remove('calendar-open');
+        sendHeight();
+      }
+    });
+
+    new ResizeObserver(sendHeight).observe(document.body);
+    window.addEventListener('load',sendHeight);
+  </script>
+</body>
+</html>
