@@ -807,3 +807,65 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
     display:block;
   }
 }
+
+
+/* Collapsible Smoobu booking */
+.booking-launch{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  padding:28px 30px;
+  background:#ebe4d8;
+  border:1px solid rgba(22,22,20,.09);
+}
+
+.booking-launch>div{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.booking-launch strong{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:26px;
+  font-weight:500;
+  line-height:1.08;
+}
+
+.booking-launch span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.booking-reveal-btn{
+  flex:0 0 auto;
+  min-width:230px;
+  border:0;
+  cursor:pointer;
+}
+
+.smoobu-booking-panel{
+  margin-top:18px;
+}
+
+.smoobu-booking-panel[hidden]{
+  display:none !important;
+}
+
+@media(max-width:700px){
+  .booking-launch{
+    align-items:stretch;
+    flex-direction:column;
+    padding:24px 22px;
+  }
+
+  .booking-launch strong{
+    font-size:24px;
+  }
+
+  .booking-reveal-btn{
+    width:100%;
+    min-width:0;
+  }
+}
