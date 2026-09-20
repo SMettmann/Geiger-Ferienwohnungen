@@ -727,10 +727,15 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   color: rgba(22, 22, 20, .48);
 }
 
-.smoobu-booking-shell #apartmentIframeKilchbergSearch,
+.smoobu-booking-shell > div {
+  width: 100%;
+}
+
 .smoobu-booking-shell iframe {
+  display: block;
   width: 100% !important;
   max-width: 100% !important;
+  border: 0;
 }
 
 .booking-sync-note {
@@ -809,50 +814,3 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 }
 
 
-
-/* Stabilize Smoobu iframe resizing */
-.smoobu-booking-shell iframe{
-  display:block;
-  width:100% !important;
-  max-width:100% !important;
-  vertical-align:top;
-}
-
-
-/* Smoobu container height reset */
-.smoobu-booking-shell > div{
-  min-height:0;
-  height:auto;
-}
-
-
-/* Brand interaction */
-.brand{
-  cursor:pointer;
-  user-select:none;
-  -webkit-user-select:none;
-  caret-color:transparent;
-}
-
-.brand:focus:not(:focus-visible){
-  outline:none;
-}
-
-.brand:focus-visible{
-  outline:2px solid rgba(41,64,42,.55);
-  outline-offset:6px;
-  border-radius:4px;
-}
-
-
-/* Never clip Smoobu controls */
-.smoobu-booking-shell{
-  max-height:none !important;
-  overflow:visible !important;
-}
-
-.smoobu-booking-shell > div,
-.smoobu-booking-shell iframe{
-  max-height:none !important;
-  overflow:visible;
-}
