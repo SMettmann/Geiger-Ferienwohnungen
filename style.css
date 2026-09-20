@@ -795,3 +795,15 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
     margin-top:18px;
   }
 }
+
+
+/* Hide final booking image on phones */
+@media (max-width:560px){
+  .booking-image{
+    display:none;
+  }
+
+  .booking{
+    display:block;
+  }
+}
