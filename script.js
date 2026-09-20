@@ -119,32 +119,31 @@ document.addEventListener('keydown',e=>{
 
 
 
-// Independent Smoobu iframe handling
+
+// Keep each Smoobu booking fully isolated in its own local document.
 (function(){
-  const frames=[...document.querySelectorAll('.smoobu-frame')];
+  const frames=[...document.querySelectorAll('.smoobu-host-frame')];
 
-  const activateFrame=(frame)=>{
-    if(!frame || !frame.classList.contains('smoobu-frame'))return;
-    const shell=frame.closest('.direct-booking-native');
-    if(!shell)return;
-    shell.classList.add('smoobu-active');
-  };
+  window.addEventListener('message',event=>{
+    if(event.origin!==location.origin)return;
+    if(event.data?.type!=='smoobu-height')return;
 
-  // Each iframe is a separate browsing context. When focus enters one of them,
-  // document.activeElement points to exactly that iframe.
-  window.addEventListener('blur',()=>{
-    setTimeout(()=>{
-      const active=document.activeElement;
-      if(active?.tagName==='IFRAME' && active.classList.contains('smoobu-frame')){
-        activateFrame(active);
-      }
-    },0);
+    const frame=frames.find(item=>
+      item.dataset.smoobuProperty===String(event.data.property) &&
+      item.contentWindow===event.source
+    );
+    if(!frame)return;
+
+    const next=Math.max(220,Math.min(Number(event.data.height)||220,1800));
+    frame.style.height=next+'px';
   });
 
-  frames.forEach(frame=>{
-    frame.addEventListener('load',()=>{
-      // Keep every widget independent; loading one never changes another.
-      frame.dataset.ready='true';
+  // If the visitor clicks outside a booking area, reset only the visual calendar expansion.
+  document.addEventListener('pointerdown',event=>{
+    if(event.target.closest('.direct-booking-native'))return;
+
+    frames.forEach(frame=>{
+      frame.contentWindow?.postMessage({type:'smoobu-reset'},location.origin);
     });
   });
 })();
