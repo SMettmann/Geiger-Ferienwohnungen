@@ -174,3 +174,4 @@ function stabilizeSmoobuIframe(targetSelector){
 
 stabilizeSmoobuIframe('#apartmentIframeKilchbergSearch');
 stabilizeSmoobuIframe('#apartmentIframeChurwaldenSearch');
+stabilizeSmoobuIframe('#apartmentIframeZurichSearch');
