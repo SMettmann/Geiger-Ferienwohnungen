@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260920-9">
+  <link rel="stylesheet" href="style.css?v=20260920-10">
   <!-- pages-refresh-20260920-2 -->
 </head>
 <body>
@@ -192,13 +192,28 @@
         <p>Wähle Anreise, Abreise und Gästezahl. Smoobu prüft die Verfügbarkeit im Hintergrund und zeigt dir die aktuell buchbaren Optionen und Preise für Kilchberg.</p>
       </div>
 
-      <div class="smoobu-booking-shell" aria-label="Direktbuchung Kilchberg">
-        <div id="apartmentIframe3220877">
-          <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
-          <script>BookingToolIframe.initialize({"url": "https://login.smoobu.com/de/booking-tool/iframe/1676062/3220877", "baseUrl": "https://login.smoobu.com", "target": "#apartmentIframe3220877"})</script>
+      <div class="booking-launch">
+        <div>
+          <strong>Kilchberg direkt buchen</strong>
+          <span>Reisedaten auswählen, aktuellen Preis sehen und direkt reservieren.</span>
         </div>
+        <button
+          class="btn btn-dark booking-reveal-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="kilchberg-booking-panel"
+          data-smoobu-toggle
+          data-smoobu-url="https://login.smoobu.com/de/booking-tool/iframe/1676062/3220877"
+          data-smoobu-target="#apartmentIframe3220877"
+        >Verfügbarkeit &amp; Preis prüfen</button>
       </div>
-      <p class="booking-sync-note">Verfügbarkeit und Preise werden über Smoobu bzw. die angebundenen Systeme aktualisiert.</p>
+
+      <div class="smoobu-booking-panel" id="kilchberg-booking-panel" hidden>
+        <div class="smoobu-booking-shell" aria-label="Direktbuchung Kilchberg">
+          <div id="apartmentIframe3220877"></div>
+        </div>
+        <p class="booking-sync-note">Verfügbarkeit und Preise werden über Smoobu bzw. die angebundenen Systeme aktualisiert.</p>
+      </div>
     </section>
 
     <section class="nearby" id="umgebung">
@@ -565,6 +580,6 @@
     <span id="lightbox-counter"></span>
   </dialog>
 
-  <script src="script.js?v=20260920-2"></script>
+  <script src="script.js?v=20260920-3"></script>
 </body>
 </html>
