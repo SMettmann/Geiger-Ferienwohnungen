@@ -808,3 +808,16 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
     height:270px;
   }
 }
+
+
+/* Hide text caret on non-editable page content */
+body,
+body *{
+  caret-color:transparent;
+}
+
+input,
+textarea,
+[contenteditable="true"]{
+  caret-color:auto;
+}
