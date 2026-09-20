@@ -751,3 +751,47 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
     padding: 14px 10px 18px;
   }
 }
+
+
+/* Mobile accommodation card separation */
+@media (max-width:560px){
+  .stay-grid{
+    gap:14px;
+    background:var(--paper);
+    grid-template-rows:500px repeat(3,340px);
+  }
+
+  .stay-card{
+    min-height:0;
+    border:1px solid rgba(28,33,31,.10);
+  }
+
+  .stay-card-featured{
+    border:0;
+  }
+
+  .stay-content,
+  .stay-card-zurich .stay-content,
+  .stay-card-dietlikon .stay-content,
+  .stay-card-churwalden .stay-content{
+    left:26px;
+    right:26px;
+    bottom:28px;
+  }
+
+  .stay-content h3,
+  .stay-card-minimal h3{
+    font-size:34px;
+    line-height:1.04;
+  }
+
+  .stay-content p{
+    margin:10px 0 0;
+    line-height:1.5;
+  }
+
+  .stay-content a,
+  .stay-card-minimal>a{
+    margin-top:18px;
+  }
+}
