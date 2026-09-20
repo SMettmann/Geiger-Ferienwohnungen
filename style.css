@@ -74,8 +74,8 @@ button{font:inherit}
 .dark-card .location-number,.dark-card p{color:rgba(255,255,255,.62)}
 .property{background:#fcfaf6;padding:110px 0 80px}
 .property-place{display:flex;align-items:baseline;gap:16px;margin:0 0 24px;padding-bottom:15px;border-bottom:1px solid rgba(28,33,31,.18);width:max-content;max-width:100%}
-.property-place strong{font-family:"Inter",Arial,sans-serif;font-size:11px;line-height:1;text-transform:uppercase;letter-spacing:.22em;font-weight:600}
-.property-place span{font-size:10px;line-height:1;text-transform:uppercase;letter-spacing:.2em;font-weight:600;color:var(--muted)}
+.property-place strong{font-family:"Playfair Display",Georgia,serif;font-size:clamp(22px,2.2vw,34px);line-height:1;font-weight:600;letter-spacing:-.025em}
+.property-place span{font-family:"Playfair Display",Georgia,serif;font-size:clamp(22px,2.2vw,34px);line-height:1;font-weight:600;letter-spacing:-.025em;color:var(--muted)}
 
 .property-title{display:grid;grid-template-columns:1.15fr .85fr;gap:90px;align-items:end}
 .property-lead{max-width:510px;padding-bottom:6px}
@@ -345,7 +345,7 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 
 @media(max-width:560px){
   .property-place{gap:10px;margin-bottom:20px;padding-bottom:12px}
-  .property-place strong{font-size:11px}
+  .property-place strong,.property-place span{font-size:24px}
   .property-place span{font-size:8px}
 }
 
