@@ -710,7 +710,7 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 .smoobu-booking-shell {
   position: relative;
   overflow: visible;
-  min-height: 220px;
+  min-height: 0;
   padding: clamp(18px, 3vw, 34px);
   background: #fff;
   border: 1px solid rgba(22, 22, 20, .10);
@@ -816,4 +816,13 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   width:100% !important;
   max-width:100% !important;
   vertical-align:top;
+}
+
+
+/* Smoobu container height reset */
+#apartmentIframeKilchbergSearch,
+#apartmentIframeZurichSearch,
+#apartmentIframeChurwaldenSearch{
+  min-height:0;
+  height:auto;
 }
