@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260920-16">
+  <link rel="stylesheet" href="style.css?v=20260920-17">
   <!-- pages-refresh-20260920-2 -->
 </head>
 <body>
@@ -193,8 +193,7 @@
       </div>
 
       <div class="smoobu-booking-shell" aria-label="Direktbuchung Kilchberg">
-        <div id="apartmentIframeKilchbergSearch">
-        </div>
+        <div id="apartmentIframeKilchbergSearch"></div>
       </div>
       <p class="booking-sync-note">Verfügbarkeit und Preise werden über Smoobu bzw. die angebundenen Systeme aktualisiert.</p>
     </section>
@@ -297,8 +296,7 @@
       </div>
 
       <div class="smoobu-booking-shell" aria-label="Direktbuchung Zürich City">
-        <div id="apartmentIframeZurichSearch">
-        </div>
+        <div id="apartmentIframeZurichSearch"></div>
       </div>
       <p class="booking-sync-note">Verfügbarkeit und Preise werden über Smoobu bzw. die angebundenen Systeme aktualisiert.</p>
     </section>
@@ -401,10 +399,7 @@
       </div>
 
       <div class="smoobu-booking-shell" aria-label="Direktbuchung Dietlikon">
-        <div id="apartmentIframeDietlikonSearch">
-          <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
-          <script>BookingToolIframe.initialize({"url": "https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3319157", "baseUrl": "https://login.smoobu.com", "target": "#apartmentIframeDietlikonSearch"})</script>
-        </div>
+        <div id="apartmentIframeDietlikonSearch"></div>
       </div>
       <p class="booking-sync-note">Verfügbarkeit und Preise werden über Smoobu bzw. die angebundenen Systeme aktualisiert.</p>
     </section>
@@ -507,8 +502,7 @@
       </div>
 
       <div class="smoobu-booking-shell" aria-label="Direktbuchung Churwalden">
-        <div id="apartmentIframeChurwaldenSearch">
-        </div>
+        <div id="apartmentIframeChurwaldenSearch"></div>
       </div>
       <p class="booking-sync-note">Verfügbarkeit und Preise werden über Smoobu bzw. die angebundenen Systeme aktualisiert.</p>
     </section>
@@ -618,10 +612,25 @@
 
   <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
   <script>
-    BookingToolIframe.initialize({"url":"https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3220877","baseUrl":"https://login.smoobu.com","target":"#apartmentIframeKilchbergSearch"});
-    BookingToolIframe.initialize({"url":"https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3220882","baseUrl":"https://login.smoobu.com","target":"#apartmentIframeZurichSearch"});
-    BookingToolIframe.initialize({"url":"https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3419581","baseUrl":"https://login.smoobu.com","target":"#apartmentIframeChurwaldenSearch"});
+    (function () {
+      const widgets = [
+        ["#apartmentIframeKilchbergSearch", "https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3220877"],
+        ["#apartmentIframeZurichSearch", "https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3220882"],
+        ["#apartmentIframeDietlikonSearch", "https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3319157"],
+        ["#apartmentIframeChurwaldenSearch", "https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]=3419581"]
+      ];
+
+      widgets.forEach(([target, url]) => {
+        if (document.querySelector(target)) {
+          BookingToolIframe.initialize({
+            url,
+            baseUrl: "https://login.smoobu.com",
+            target
+          });
+        }
+      });
+    })();
   </script>
-  <script src="script.js?v=20260920-11"></script>
+  <script src="script.js?v=20260920-12"></script>
 </body>
 </html>
