@@ -98,7 +98,7 @@ document.addEventListener('keydown',e=>{
 
 
 
-// Stabilize Smoobu iframe height
+// Stabilize Smoobu iframe height without trapping large empty space
 function stabilizeSmoobuIframe(targetSelector){
   const target=document.querySelector(targetSelector);
   if(!target)return;
@@ -107,16 +107,42 @@ function stabilizeSmoobuIframe(targetSelector){
     if(!iframe || iframe.dataset.heightStabilized==='true')return;
     iframe.dataset.heightStabilized='true';
 
-    let maxHeight=0;
+    let stableHeight=0;
     let scheduled=false;
+    const jitterTolerance=70;
+
+    const requestedHeight=()=>{
+      const inlineHeight=parseFloat(iframe.style.height);
+      if(Number.isFinite(inlineHeight) && inlineHeight>0)return Math.ceil(inlineHeight);
+
+      const attributeHeight=parseFloat(iframe.getAttribute('height'));
+      if(Number.isFinite(attributeHeight) && attributeHeight>0)return Math.ceil(attributeHeight);
+
+      return Math.ceil(iframe.getBoundingClientRect().height || 0);
+    };
 
     const stabilize=()=>{
       scheduled=false;
-      const current=Math.ceil(iframe.getBoundingClientRect().height || parseFloat(iframe.style.height) || 0);
-      if(current>maxHeight){
-        maxHeight=current;
-        iframe.style.minHeight=maxHeight+'px';
+      const next=requestedHeight();
+      if(!next)return;
+
+      if(!stableHeight){
+        stableHeight=next;
+        iframe.style.minHeight=stableHeight+'px';
+        return;
       }
+
+      const difference=Math.abs(next-stableHeight);
+
+      // Ignore only tiny Smoobu hover/layout fluctuations.
+      if(difference<=jitterTolerance){
+        iframe.style.minHeight=stableHeight+'px';
+        return;
+      }
+
+      // Real booking-step changes may grow OR shrink.
+      stableHeight=next;
+      iframe.style.minHeight=stableHeight+'px';
     };
 
     const schedule=()=>{
