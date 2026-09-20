@@ -820,9 +820,14 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 
 
 /* Smoobu container height reset */
-#apartmentIframeKilchbergSearch,
-#apartmentIframeZurichSearch,
-#apartmentIframeChurwaldenSearch{
+.smoobu-booking-shell > div{
   min-height:0;
   height:auto;
+}
+
+/* Keep Smoobu's initial empty area compact.
+   JavaScript only changes this outer wrapper, never the Smoobu iframe itself. */
+.smoobu-booking-shell.smoobu-height-capped{
+  max-height:430px;
+  overflow:hidden;
 }
