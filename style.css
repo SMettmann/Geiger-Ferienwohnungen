@@ -808,3 +808,12 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   }
 }
 
+
+
+/* Stabilize Smoobu iframe resizing */
+.smoobu-booking-shell iframe{
+  display:block;
+  width:100% !important;
+  max-width:100% !important;
+  vertical-align:top;
+}
