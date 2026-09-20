@@ -99,7 +99,7 @@ button{font:inherit}
 .amenities{background:var(--paper);padding:34px}
 .amenities h3{font-family:"Playfair Display",serif;font-size:28px;margin:0 0 24px;font-weight:500}
 .amenity-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
-.amenity-grid span{padding:12px 4px;border-bottom:1px solid var(--line);font-size:13px}
+.amenity-grid span{padding:12px 4px;border-bottom:1px solid var(--line);font-size:13px;cursor:default}
 .amenities small{display:block;color:var(--muted);margin-top:18px}
 .nearby{background:#1d2c26;color:white;padding:115px 0 100px;overflow:hidden}
 .nearby-head{display:grid;grid-template-columns:1.05fr .65fr;gap:100px;align-items:end;margin-bottom:50px}
