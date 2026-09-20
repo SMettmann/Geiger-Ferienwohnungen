@@ -61,6 +61,9 @@ button{font:inherit}
 .stay-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,16,12,.68),rgba(8,16,12,.08) 65%)}
 .stay-content{position:absolute;left:40px;right:40px;bottom:38px}
 .stay-kicker{font-size:10px;letter-spacing:.2em;font-weight:600}
+.stay-location{position:absolute;top:24px;left:24px;z-index:3;display:inline-flex;flex-direction:column;gap:2px;padding:11px 14px 10px;background:rgba(245,241,234,.94);color:var(--ink);border:1px solid rgba(28,33,31,.12);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.stay-location strong{font-family:"Playfair Display",Georgia,serif;font-size:25px;line-height:1;font-weight:600;letter-spacing:-.02em}
+.stay-location span{font-size:9px;line-height:1.2;text-transform:uppercase;letter-spacing:.18em;font-weight:600;color:var(--muted)}
 .stay-content h3,.stay-card-minimal h3{font-family:"Playfair Display",serif;font-size:38px;line-height:1.08;font-weight:500;margin:10px 0}
 .stay-content p{max-width:430px;color:rgba(255,255,255,.8)}
 .stay-content a,.stay-card-minimal>a{display:inline-flex;gap:10px;font-size:13px;font-weight:500;margin-top:15px}
@@ -168,9 +171,9 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
   .intro h2,.section h2,.nearby h2,.booking h2{font-size:40px}
   .section-head{margin-bottom:30px}
   .stays{padding-bottom:80px}
-  .stay-grid{grid-template-rows:520px repeat(3,270px)}
+  .stay-grid{grid-template-rows:520px repeat(3,290px)}
   .stay-content,.stay-card-minimal{padding:28px;left:0;right:0}
-  .stay-content h3,.stay-card-minimal h3{font-size:32px}
+  .stay-content h3,.stay-card-minimal h3{font-size:32px}\n  .stay-location{top:16px;left:16px;padding:9px 11px 8px}\n  .stay-location strong{font-size:21px}
   .property{padding-top:80px}
   .feature-strip{margin:55px auto}
   .editorial-gallery{grid-template-columns:1fr;grid-auto-rows:270px}
