@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260920-5">
+  <link rel="stylesheet" href="style.css?v=20260920-6">
   <!-- pages-refresh-20260920-2 -->
 </head>
 <body>
@@ -134,7 +134,7 @@
         </div>
         <div class="property-lead">
           <p>Helle Räume, warme Holzelemente und ein Wohngefühl, das bewusst nicht nach klassischem Apartment aussieht. Dazu kommen ein eigener Außenbereich, eine voll ausgestattete Küche und viel Platz zum gemeinsamen Ankommen.</p>
-          <a class="text-link" href="https://www.airbnb.com/h/staywithushomes-kilchberg" target="_blank" rel="noopener">Verfügbarkeit prüfen <span>↗</span></a>
+          <a class="text-link" href="#kilchberg-buchen">Direkt buchen <span>↓</span></a>
         </div>
       </div>
 
@@ -182,26 +182,29 @@
       </div>    </section>
 
 
-    <section class="property-availability section" id="kilchberg-verfuegbarkeit">
+
+    <section class="property-availability section" id="kilchberg-buchen">
       <div class="availability-intro">
         <div>
-          <p class="eyebrow">VERFÜGBARKEIT · KILCHBERG</p>
-          <h2>Freie Tage direkt ansehen.</h2>
+          <p class="eyebrow">DIREKT BUCHEN · KILCHBERG</p>
+          <h2>Verfügbarkeit prüfen.<br>Direkt buchen.</h2>
         </div>
-        <p>Der Kalender wird direkt über Smoobu aktualisiert. So siehst du auf einen Blick, welche Zeiträume für das Haus in Kilchberg noch verfügbar sind.</p>
+        <p>Wähle Anreise, Abreise und Gästezahl. Smoobu prüft die Verfügbarkeit im Hintergrund und zeigt dir die aktuell buchbaren Optionen und Preise für Kilchberg.</p>
       </div>
 
-      <div class="smoobu-calendar-shell" aria-label="Verfügbarkeitskalender Kilchberg">
-        <div id="smoobuApartment3220877de" class="calendarWidget">
-          <div
-            class="calendarContent"
-            data-load-calendar-url="https://login.smoobu.com/de/cockpit/widget/single-calendar/3220877"
-            data-verification="8aac502ece5a50d81642fab02beb8fceff0047a9c8dfec6ac91d544ec5606e68"
-            data-baseUrl="https://login.smoobu.com"
-            data-disable-css="false"
-          ></div>
+      <div class="smoobu-booking-shell" aria-label="Direktbuchung Kilchberg">
+        <div id="apartmentIframeKilchberg">
+          <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
+          <script>
+            BookingToolIframe.initialize({
+              "url": "https://login.smoobu.com/de/booking-tool/iframe/1676062",
+              "baseUrl": "https://login.smoobu.com",
+              "target": "#apartmentIframeKilchberg"
+            });
+          </script>
         </div>
       </div>
+      <p class="booking-sync-note">Verfügbarkeit und Preise werden über Smoobu bzw. die angebundenen Systeme aktualisiert.</p>
     </section>
 
     <section class="nearby" id="umgebung">
@@ -535,7 +538,7 @@
         <h2>Welche Unterkunft passt zu deiner Reise?</h2>
         <p>Kilchberg verbindet Familienkomfort mit See-Nähe, Zürich ist die kompakte City-Base, Dietlikon bietet viel Platz und Churwalden bringt die Bündner Bergwelt direkt vor die Tür.</p>
         <div class="booking-actions">
-          <a class="btn btn-dark" href="https://www.airbnb.com/h/staywithushomes-kilchberg" target="_blank" rel="noopener">Kilchberg prüfen</a>
+          <a class="btn btn-dark" href="#kilchberg-buchen">Kilchberg direkt buchen</a>
           <a class="btn btn-outline" href="https://www.airbnb.com/h/staywithushomes-zurich" target="_blank" rel="noopener">Zürich prüfen</a>
           <a class="btn btn-outline" href="https://www.airbnb.com/h/dietlikon-city" target="_blank" rel="noopener">Dietlikon prüfen</a>
           <a class="btn btn-outline" href="https://www.airbnb.com/h/churwalden" target="_blank" rel="noopener">Churwalden prüfen</a>
@@ -568,7 +571,6 @@
     <span id="lightbox-counter"></span>
   </dialog>
 
-  <script type="text/javascript" src="https://login.smoobu.com/js/Apartment/CalendarWidget.js"></script>
   <script src="script.js?v=20260920-2"></script>
 </body>
 </html>
