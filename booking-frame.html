@@ -53,11 +53,11 @@
 
     const sendHeight=()=>{
       requestAnimationFrame(()=>{
-        const height=Math.max(
-          220,
-          document.body.scrollHeight,
-          document.documentElement.scrollHeight
-        );
+        const frame=getChildFrame();
+        const height=frame
+          ? Math.max(220,Math.ceil(frame.getBoundingClientRect().height))
+          : 220;
+
         parent.postMessage({
           type:'smoobu-height',
           property,
