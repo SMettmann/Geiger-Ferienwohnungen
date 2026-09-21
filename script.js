@@ -147,7 +147,14 @@ document.addEventListener('keydown',e=>{
     );
     if(!frame)return;
 
-    const next=Math.max(220,Math.min(Number(event.data.height)||220,1800));
+    const measured=Math.max(220,Number(event.data.height)||220);
+
+    // On mobile the final Smoobu booking form can be taller than 1800px.
+    // Do not clamp it there, otherwise the last fields / booking button get cut off.
+    const next=window.matchMedia('(max-width:760px)').matches
+      ? measured
+      : Math.min(measured,1800);
+
     frame.style.height=next+'px';
   });
 
