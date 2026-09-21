@@ -19,8 +19,8 @@
       min-height:620px!important;
     }
     @media(max-width:760px){
-      body.calendar-open #bookingTarget iframe{
-        min-height:1250px!important;
+      #bookingTarget iframe{
+        max-width:100%!important;
       }
     }
   </style>
@@ -90,23 +90,46 @@
       if(!frame || frame.dataset.bound==='true')return;
       frame.dataset.bound='true';
 
+      let lastCorrectedHeight=0;
+
       const syncFromSmoobu=()=>{
         const h=parseFloat(frame.style.height)||parseFloat(frame.getAttribute('height'))||0;
         const mobile=window.matchMedia('(max-width:760px)').matches;
 
-        // On mobile Smoobu's own iframe height can stop too early in the final
-        // booking form. Force the real nested iframe itself tall enough so the
-        // submit button is visible without an inner scrollbar.
+        // Smoobu calculates its own iframe height. On narrow screens the legal
+        // text wraps onto extra lines after that calculation, so the final
+        // booking button gets clipped. Correct Smoobu's reported height instead
+        // of forcing an unrelated fixed height.
         if(mobile && h>=500){
           document.body.classList.add('calendar-open');
-          if(frame.style.getPropertyValue('min-height')!=='1250px'){
-            frame.style.setProperty('min-height','1250px','important');
+
+          // Ignore the mutation caused by our own corrected height.
+          if(lastCorrectedHeight && Math.abs(h-lastCorrectedHeight)<2){
+            parent.postMessage({
+              type:'smoobu-height',
+              property,
+              height:h
+            }, location.origin);
+            return;
           }
-        }else if(h>0 && h<380){
+
+          const corrected=Math.ceil(h+220);
+          lastCorrectedHeight=corrected;
+
+          frame.style.setProperty('height',corrected+'px','important');
+          frame.setAttribute('height',String(corrected));
+
+          parent.postMessage({
+            type:'smoobu-height',
+            property,
+            height:corrected
+          }, location.origin);
+          return;
+        }
+
+        if(h>0 && h<380){
           document.body.classList.remove('calendar-open');
-          if(frame.style.getPropertyValue('min-height')){
-            frame.style.removeProperty('min-height');
-          }
+          lastCorrectedHeight=0;
         }
 
         sendHeight(true);
