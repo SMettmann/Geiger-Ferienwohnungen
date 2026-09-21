@@ -199,12 +199,44 @@ document.addEventListener('keydown',e=>{
     if(outside) dialog.close();
   });
 
-  form?.addEventListener('submit',event=>{
+  form?.addEventListener('submit',async event=>{
     event.preventDefault();
-    if(status){
-      status.textContent=window.getHomepageLanguage?.()==='en'
-        ? 'The form is ready. The recipient address for sending will be added next.'
-        : 'Das Formular ist fertig gestaltet. Die Empfängeradresse für den Versand wird noch hinterlegt.';
+    if(!form.reportValidity())return;
+
+    const submit=form.querySelector('.contact-submit');
+    const lang=window.getHomepageLanguage?.()==='en'?'en':'de';
+    if(submit)submit.disabled=true;
+    if(status)status.textContent=lang==='en'?'Sending…':'Wird gesendet…';
+
+    try{
+      const data=new FormData(form);
+      data.append('_subject','Neue Anfrage über Stay With Us Homes');
+      data.append('_template','table');
+      data.append('_captcha','false');
+
+      const response=await fetch('https://formsubmit.co/ajax/info@geigerimmobilien.ch',{
+        method:'POST',
+        headers:{'Accept':'application/json'},
+        body:data
+      });
+
+      const result=await response.json().catch(()=>({}));
+      if(!response.ok || result.success===false)throw new Error('FormSubmit error');
+
+      form.reset();
+      if(status){
+        status.textContent=lang==='en'
+          ? 'Thank you! Your message has been sent.'
+          : 'Vielen Dank! Deine Nachricht wurde gesendet.';
+      }
+    }catch(error){
+      if(status){
+        status.textContent=lang==='en'
+          ? 'Sending failed. Please try again.'
+          : 'Das Senden hat nicht geklappt. Bitte versuche es noch einmal.';
+      }
+    }finally{
+      if(submit)submit.disabled=false;
     }
   });
 })();
