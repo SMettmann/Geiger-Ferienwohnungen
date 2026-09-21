@@ -199,6 +199,21 @@ footer{padding:55px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;align-it
 
 .experience-rail::-webkit-scrollbar{display:none}
 
+/* Center the complete experience-card row on desktop.
+   If the viewport gets too narrow, the rail can still overflow horizontally.
+   Mobile keeps its existing swipe/scroll layout unchanged. */
+@media(min-width:761px){
+  .experience-rail{
+    width:min(calc(100% - 64px),1880px);
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:0;
+    padding-right:0;
+    grid-auto-flow:initial;
+    grid-template-columns:repeat(6,minmax(260px,1fr));
+  }
+}
+
 .btn-outline{border:1px solid var(--ink);color:var(--ink);background:transparent}
 .stay-card-zurich{color:#fff;border:0;background-image:linear-gradient(0deg,rgba(16,20,19,.72),rgba(16,20,19,.08) 70%),url('assets/zurich-studio-main.webp');background-size:cover;background-position:center;background-repeat:no-repeat}
 .stay-card-zurich .stay-content{left:35px;right:35px;bottom:32px}
