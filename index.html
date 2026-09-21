@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260921-31">
+  <link rel="stylesheet" href="style.css?v=20260921-32">
   <!-- pages-refresh-20260920-2 -->
 </head>
 <body>
@@ -20,7 +20,14 @@
         <span class="brand-homes">HOMES</span>
       </span>
     </a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menü</button>
+    <div class="header-actions">
+      <div class="language-switch" aria-label="Sprache wählen">
+        <button type="button" class="language-option is-active" data-lang="de" aria-pressed="true">DE</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" class="language-option" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menü</button>
+    </div>
     <nav id="main-nav" class="main-nav" aria-label="Hauptnavigation">
       <a href="#unterkuenfte">Unterkünfte</a>
       <a href="#kilchberg">Kilchberg</a>
@@ -656,6 +663,6 @@
     <button class="lightbox-next" aria-label="Nächstes Bild">→</button>
     <span id="lightbox-counter"></span>
   </dialog>
-  <script src="script.js?v=20260921-02"></script>
+  <script src="script.js?v=20260921-03"></script>
 </body>
 </html>
