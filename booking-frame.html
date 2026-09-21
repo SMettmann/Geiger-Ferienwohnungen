@@ -19,8 +19,8 @@
       min-height:620px!important;
     }
     @media(max-width:760px){
-      body.calendar-open #bookingTarget iframe{
-        min-height:720px!important;
+      #bookingTarget iframe{
+        max-width:100%!important;
       }
     }
   </style>
@@ -39,20 +39,11 @@
     }
 
     const target=document.getElementById('bookingTarget');
-    const mobile=window.matchMedia('(max-width:760px)').matches;
-
-    // Smoobu provides a dedicated URL form for one individual property.
-    // Use that on mobile so the booking form is rendered as a true single-
-    // property flow instead of a one-item apartment-group search.
-    const bookingUrl=mobile
-      ? 'https://login.smoobu.com/de/booking-tool/iframe/1676062/'+property
-      : 'https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]='+property;
-
     const smoobuScript=document.createElement('script');
     smoobuScript.src='https://login.smoobu.com/js/Settings/BookingToolIframe.js';
     smoobuScript.onload=()=>{
       BookingToolIframe.initialize({
-        url:bookingUrl,
+        url:'https://login.smoobu.com/de/booking-tool/iframe/1676062?apartmentGroups[]='+property,
         baseUrl:'https://login.smoobu.com',
         target:'#bookingTarget'
       });
@@ -63,23 +54,27 @@
     let lastSentHeight=0;
     const COMPACT_LIMIT=500;
 
-    const getChildFrame=()=>target.querySelector('iframe');
-
     const sendHeight=(force=false)=>{
       requestAnimationFrame(()=>{
-        const child=getChildFrame();
-        const height=child
-          ? Math.max(220,Math.ceil(child.getBoundingClientRect().height))
+        const frame=getChildFrame();
+        const height=frame
+          ? Math.max(220,Math.ceil(frame.getBoundingClientRect().height))
           : 220;
 
         const wasCompact=lastSentHeight>0 && lastSentHeight<COMPACT_LIMIT;
         const isCompact=height<COMPACT_LIMIT;
 
+        // While the widget is in its compact search state, Smoobu can change
+        // its own iframe height when amenity tooltips appear on hover.
+        // Keep our outer frame completely fixed in that state.
         if(!force && wasCompact && isCompact){
           return;
         }
 
+        // A real transition (calendar/booking opens or closes) crosses the
+        // compact/expanded boundary and is still allowed through.
         lastSentHeight=height;
+
         parent.postMessage({
           type:'smoobu-height',
           property,
@@ -88,28 +83,64 @@
       });
     };
 
+    const getChildFrame=()=>target.querySelector('iframe');
+
     const bindSmoobuFrame=()=>{
-      const child=getChildFrame();
-      if(!child || child.dataset.bound==='true')return;
-      child.dataset.bound='true';
+      const frame=getChildFrame();
+      if(!frame || frame.dataset.bound==='true')return;
+      frame.dataset.bound='true';
+
+      let lastCorrectedHeight=0;
 
       const syncFromSmoobu=()=>{
-        const h=parseFloat(child.style.height)||parseFloat(child.getAttribute('height'))||0;
-        if(h>0 && h<380){
-          const wasOpen=document.body.classList.contains('calendar-open');
-          document.body.classList.remove('calendar-open');
-          sendHeight(wasOpen);
+        const h=parseFloat(frame.style.height)||parseFloat(frame.getAttribute('height'))||0;
+        const mobile=window.matchMedia('(max-width:760px)').matches;
+
+        // Smoobu calculates its own iframe height. On narrow screens the legal
+        // text wraps onto extra lines after that calculation, so the final
+        // booking button gets clipped. Correct Smoobu's reported height instead
+        // of forcing an unrelated fixed height.
+        if(mobile && h>=500){
+          document.body.classList.add('calendar-open');
+
+          // Ignore the mutation caused by our own corrected height.
+          if(lastCorrectedHeight && Math.abs(h-lastCorrectedHeight)<2){
+            parent.postMessage({
+              type:'smoobu-height',
+              property,
+              height:h
+            }, location.origin);
+            return;
+          }
+
+          const corrected=Math.ceil(h+220);
+          lastCorrectedHeight=corrected;
+
+          frame.style.setProperty('height',corrected+'px','important');
+          frame.setAttribute('height',String(corrected));
+
+          parent.postMessage({
+            type:'smoobu-height',
+            property,
+            height:corrected
+          }, location.origin);
           return;
         }
-        sendHeight();
+
+        if(h>0 && h<380){
+          document.body.classList.remove('calendar-open');
+          lastCorrectedHeight=0;
+        }
+
+        sendHeight(true);
       };
 
-      new MutationObserver(syncFromSmoobu).observe(child,{
+      new MutationObserver(syncFromSmoobu).observe(frame,{
         attributes:true,
         attributeFilter:['style','height']
       });
 
-      child.addEventListener('load',()=>{
+      frame.addEventListener('load',()=>{
         setTimeout(()=>sendHeight(true),80);
         setTimeout(()=>sendHeight(true),350);
       });
