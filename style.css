@@ -1152,3 +1152,40 @@ textarea,
     margin-bottom:38px;
   }
 }
+
+
+/* DE / EN homepage language switch */
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+.language-switch{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  letter-spacing:.12em;
+  font-weight:500;
+  white-space:nowrap;
+}
+.language-option{
+  appearance:none;
+  border:0;
+  padding:4px 1px;
+  background:transparent;
+  color:var(--muted);
+  font:inherit;
+  letter-spacing:inherit;
+  cursor:pointer;
+  opacity:.55;
+}
+.language-option.is-active{
+  color:var(--ink);
+  opacity:1;
+  border-bottom:1px solid currentColor;
+}
+@media(max-width:760px){
+  .header-actions{gap:14px}
+  .language-switch{font-size:11px;gap:4px}
+}
