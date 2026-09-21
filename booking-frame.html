@@ -91,12 +91,19 @@
 
       const syncFromSmoobu=()=>{
         const h=parseFloat(frame.style.height)||parseFloat(frame.getAttribute('height'))||0;
-        if(h>0 && h<380){
-          const wasOpen=document.body.classList.contains('calendar-open');
+
+        // On mobile, focus/blur is unreliable inside nested iframes.
+        // Detect the expanded Smoobu form from its own reported iframe height instead.
+        if(window.matchMedia('(max-width:760px)').matches){
+          if(h>=500){
+            document.body.classList.add('calendar-open');
+          }else if(h>0 && h<380){
+            document.body.classList.remove('calendar-open');
+          }
+        }else if(h>0 && h<380){
           document.body.classList.remove('calendar-open');
-          sendHeight(wasOpen);
-          return;
         }
+
         sendHeight();
       };
 
