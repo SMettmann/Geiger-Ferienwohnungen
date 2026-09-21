@@ -19,15 +19,8 @@
       min-height:620px!important;
     }
     @media(max-width:760px){
-      html,body{
-        overflow-x:hidden;
-        overflow-y:auto;
-        -webkit-overflow-scrolling:touch;
-        overscroll-behavior:contain;
-      }
-
       body.calendar-open #bookingTarget iframe{
-        min-height:1000px!important;
+        min-height:1250px!important;
       }
     }
   </style>
@@ -82,15 +75,10 @@
         // compact/expanded boundary and is still allowed through.
         lastSentHeight=height;
 
-        const mobile=window.matchMedia('(max-width:760px)').matches;
-        const reportedHeight=mobile && height>=500
-          ? Math.min(height, Math.max(620, Math.round(window.innerHeight*0.78)))
-          : height;
-
         parent.postMessage({
           type:'smoobu-height',
           property,
-          height:reportedHeight
+          height
         }, location.origin);
       });
     };
@@ -104,20 +92,24 @@
 
       const syncFromSmoobu=()=>{
         const h=parseFloat(frame.style.height)||parseFloat(frame.getAttribute('height'))||0;
+        const mobile=window.matchMedia('(max-width:760px)').matches;
 
-        // On mobile, focus/blur is unreliable inside nested iframes.
-        // Detect the expanded Smoobu form from its own reported iframe height instead.
-        if(window.matchMedia('(max-width:760px)').matches){
-          if(h>=500){
-            document.body.classList.add('calendar-open');
-          }else if(h>0 && h<380){
-            document.body.classList.remove('calendar-open');
+        // On mobile Smoobu's own iframe height can stop too early in the final
+        // booking form. Force the real nested iframe itself tall enough so the
+        // submit button is visible without an inner scrollbar.
+        if(mobile && h>=500){
+          document.body.classList.add('calendar-open');
+          if(frame.style.getPropertyValue('min-height')!=='1250px'){
+            frame.style.setProperty('min-height','1250px','important');
           }
         }else if(h>0 && h<380){
           document.body.classList.remove('calendar-open');
+          if(frame.style.getPropertyValue('min-height')){
+            frame.style.removeProperty('min-height');
+          }
         }
 
-        sendHeight();
+        sendHeight(true);
       };
 
       new MutationObserver(syncFromSmoobu).observe(frame,{
