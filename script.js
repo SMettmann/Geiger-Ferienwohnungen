@@ -47,11 +47,11 @@ if(location.hash==='#top'){
 
 const galleries={
   kilchberg:[
-    ['assets/kilchberg-living.webp','Wohnbereich'],
-    ['assets/kilchberg-dining.webp','Essbereich'],
-    ['assets/kilchberg-kitchen.webp','Küche'],
-    ['assets/kilchberg-bedroom-lake.webp','Schlafzimmer mit Seeblick'],
-    ['assets/kilchberg-bedroom.webp','Weiteres Schlafzimmer']
+    ['https://a0.muscache.com/im/pictures/hosting/Hosting-1640774749513849269/original/aaef4c64-34a1-4601-b5ea-7457669fb338.jpeg?im_w=1200','Wohnbereich'],
+    ['https://a0.muscache.com/im/pictures/hosting/Hosting-1640774749513849269/original/45ea1953-9627-4e41-840e-2433be61feb4.jpeg?im_w=1200','Essbereich'],
+    ['https://a0.muscache.com/im/pictures/hosting/Hosting-1640774749513849269/original/2455e184-3d05-4c2d-9c07-9c8064c618d5.jpeg?im_w=1200','Küche'],
+    ['https://a0.muscache.com/im/pictures/hosting/Hosting-1640774749513849269/original/41b3c36f-6c76-4afd-8bdb-e488a646fff0.png?im_w=1440','Schlafzimmer mit Seeblick'],
+    ['https://a0.muscache.com/im/pictures/hosting/Hosting-1640774749513849269/original/4b0a0c6d-473b-46a3-9b7b-62c8b3e9e60a.jpeg?im_w=1200','Weiteres Schlafzimmer']
   ],
   zurich:[
     ['assets/zurich-studio-main.webp','Studio Gesamtansicht'],
