@@ -1277,3 +1277,36 @@ textarea,
     grid-row:4;
   }
 }
+
+
+/* Legal page language switch */
+.legal-header-actions{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+.legal-language-switch{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  letter-spacing:.12em;
+  font-weight:500;
+  white-space:nowrap;
+}
+.legal-language-option{
+  color:var(--muted);
+  text-decoration:none;
+  opacity:.55;
+  padding:4px 1px;
+}
+.legal-language-option.is-active{
+  color:var(--ink);
+  opacity:1;
+  border-bottom:1px solid currentColor;
+}
+@media(max-width:760px){
+  .legal-header-actions{gap:12px}
+  .legal-language-switch{font-size:11px;gap:4px}
+  .legal-back{font-size:12px}
+}
