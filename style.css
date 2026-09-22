@@ -1189,3 +1189,86 @@ textarea,
   .header-actions{gap:14px}
   .language-switch{font-size:11px;gap:4px}
 }
+
+
+/* Personal portrait in the Stay With Us Homes about section */
+.about-person-card{
+  display:grid;
+  grid-template-columns:minmax(170px,.78fr) minmax(0,1.22fr);
+  grid-template-rows:auto auto 1fr;
+  column-gap:36px;
+  align-items:start;
+}
+.about-person-top{grid-column:1 / -1}
+.about-person-portrait{
+  grid-column:1;
+  grid-row:2 / 4;
+  margin:48px 0 0;
+  position:relative;
+  z-index:1;
+  overflow:hidden;
+}
+.about-person-portrait img{
+  display:block;
+  width:100%;
+  aspect-ratio:4 / 5.15;
+  object-fit:cover;
+  object-position:50% 16%;
+}
+.about-person-name{
+  grid-column:2;
+  grid-row:2;
+  margin:72px 0 34px;
+}
+.about-person-name span{
+  font-size:clamp(58px,5.7vw,88px);
+}
+.about-person-copy{
+  grid-column:2;
+  grid-row:3;
+  display:block;
+  max-width:none;
+}
+.about-person-copy p + p{margin-top:18px}
+
+@media(max-width:1100px){
+  .about-person-card{
+    padding:48px 38px 52px;
+    grid-template-columns:minmax(150px,.72fr) minmax(0,1.28fr);
+    column-gap:28px;
+  }
+  .about-person-name{margin-top:58px}
+}
+@media(max-width:900px){
+  .about-person-card{
+    grid-template-columns:minmax(190px,.72fr) minmax(0,1.28fr);
+    column-gap:34px;
+  }
+  .about-person-portrait{margin-top:38px}
+  .about-person-name{margin:48px 0 28px}
+}
+@media(max-width:650px){
+  .about-person-card{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto auto auto;
+  }
+  .about-person-top{grid-column:1;grid-row:1}
+  .about-person-portrait{
+    grid-column:1;
+    grid-row:2;
+    margin-top:30px;
+  }
+  .about-person-portrait img{
+    aspect-ratio:4 / 4.9;
+    object-position:50% 14%;
+  }
+  .about-person-name{
+    grid-column:1;
+    grid-row:3;
+    margin:34px 0 24px;
+  }
+  .about-person-copy{
+    grid-column:1;
+    grid-row:4;
+  }
+}
