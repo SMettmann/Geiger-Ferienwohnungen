@@ -303,7 +303,7 @@ document.addEventListener('keydown',e=>{
     "DEINE ANSPRECHPERSON":"YOUR CONTACT","Als Mutter von drei Kindern und nach mehr als zehn Jahren Selbstständigkeit in der Textilbranche kümmert sich Kim heute um die operative Betreuung. Kurz- und Langzeitvermietungen, Ferienwohnungen und eigene Liegenschaften laufen bei ihr zusammen.":"As a mother of three and after more than ten years of self-employment in the textile industry, Kim now handles day-to-day operations. Short- and long-term rentals, holiday homes and our own properties all come together with her.","Ihr Anspruch: erreichbar sein, Verantwortung übernehmen und Anliegen direkt und unkompliziert klären. Wohnungen werden regelmäßig kontrolliert, kleinere Unterhaltsarbeiten selbst erledigt und größere Themen zuverlässig mit Verwaltung oder Handwerkern koordiniert.":"Her approach is simple: be available, take responsibility and resolve matters directly and without fuss. Apartments are checked regularly, minor maintenance is handled personally and larger issues are reliably coordinated with property managers or tradespeople.",
     "EIN NETZWERK, DAS DIREKT GREIFT":"A NETWORK THAT WORKS DIRECTLY","Architektur, Eigentümer-Erfahrung":"Architecture, owner experience","und Handwerk in der Familie.":"and skilled trades in the family.","Auch bei baulichen Fragen und Reparaturen bleiben die Wege kurz: In unserer Familie kommen Erfahrung aus Architektur, Immobilieneigentum und Handwerk zusammen. So können wir viele Themen direkt einschätzen und Anpassungen oder Reparaturen unkompliziert koordinieren.":"When it comes to building matters and repairs, communication stays direct too: our family combines experience in architecture, property ownership and skilled trades. This allows us to assess many issues quickly and coordinate adjustments or repairs without unnecessary detours.","Das Ziel ist einfach: Immobilien sorgfältig pflegen, Eigentümer entlasten und Gästen eine ruhige, gut betreute Nutzung ermöglichen.":"The goal is simple: care for properties properly, support owners and give guests a calm, well-managed stay.",
     "DEIN AUFENTHALT":"YOUR STAY","Welche Unterkunft passt zu deiner Reise?":"Which stay suits your trip?","Kilchberg verbindet Familienkomfort mit See-Nähe, Zürich ist die kompakte City-Base, Dietlikon bietet viel Platz und Churwalden bringt die Bündner Bergwelt direkt vor die Tür.":"Kilchberg combines family comfort with proximity to the lake, Zurich is the compact city base, Dietlikon offers plenty of space and Churwalden puts the Graubünden mountains right on your doorstep.","Kilchberg buchen":"Book Kilchberg","Zürich buchen":"Book Zurich","Dietlikon buchen":"Book Dietlikon","Churwalden buchen":"Book Churwalden",
-    "Ferienwohnungen & Apartments in der Schweiz.":"Holiday homes & apartments in Switzerland.","Impressum":"Legal notice","Datenschutz":"Privacy","Nach oben ↑":"Back to top ↑",
+    "Ferienwohnungen & Apartments in der Schweiz.":"Holiday homes & apartments in Switzerland.","Impressum":"Legal notice","AGB & Hausregeln":"Terms & House Rules","Datenschutz":"Privacy","Nach oben ↑":"Back to top ↑",
     "KONTAKT":"CONTACT","Wie können wir helfen?":"How can we help?","Schreib uns kurz, worum es geht. Für Verfügbarkeit und Preise nutzt du am besten direkt den Kalender der jeweiligen Unterkunft.":"Tell us briefly what you need. For availability and prices, please use the calendar for the relevant property.","E-Mail":"Email","Telefon":"Phone","optional":"optional","Unterkunft":"Property","Bitte auswählen":"Please select","Allgemeine Anfrage":"General enquiry","Nachricht":"Message","Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden.":"I agree that my details may be used to process my enquiry.","Datenschutzerklärung":"Privacy policy","Nachricht senden":"Send message"
   }));
 
@@ -371,6 +371,17 @@ document.addEventListener('keydown',e=>{
       btn.classList.toggle('is-active',active);
       btn.setAttribute('aria-pressed',String(active));
     });
+
+    const legalTargets={
+      impressum:english?'impressum-en.html':'impressum.html',
+      agb:english?'agb-en.html':'agb.html',
+      datenschutz:english?'datenschutz-en.html':'datenschutz.html'
+    };
+    document.querySelectorAll('[data-legal]').forEach(link=>{
+      const key=link.dataset.legal;
+      if(legalTargets[key]) link.setAttribute('href',legalTargets[key]);
+    });
+
     localStorage.setItem('staywithus-language',lang);
   }
 
