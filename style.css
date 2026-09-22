@@ -1194,16 +1194,16 @@ textarea,
 /* Personal portrait in the Stay With Us Homes about section */
 .about-person-card{
   display:grid;
-  grid-template-columns:minmax(170px,.78fr) minmax(0,1.22fr);
+  grid-template-columns:minmax(210px,.92fr) minmax(0,1.08fr);
   grid-template-rows:auto auto 1fr;
-  column-gap:36px;
+  column-gap:40px;
   align-items:start;
 }
 .about-person-top{grid-column:1 / -1}
 .about-person-portrait{
   grid-column:1;
   grid-row:2 / 4;
-  margin:48px 0 0;
+  margin:54px 0 0;
   position:relative;
   z-index:1;
   overflow:hidden;
@@ -1218,26 +1218,31 @@ textarea,
 .about-person-name{
   grid-column:2;
   grid-row:2;
-  margin:72px 0 34px;
+  margin:58px 0 28px;
 }
 .about-person-name span{
-  font-size:clamp(58px,5.7vw,88px);
+  font-size:clamp(56px,5vw,82px);
 }
 .about-person-copy{
   grid-column:2;
   grid-row:3;
   display:block;
-  max-width:none;
+  max-width:390px;
 }
-.about-person-copy p + p{margin-top:18px}
+.about-person-copy p{
+  line-height:1.72;
+}
+.about-person-copy p + p{margin-top:24px}
 
 @media(max-width:1100px){
   .about-person-card{
     padding:48px 38px 52px;
-    grid-template-columns:minmax(150px,.72fr) minmax(0,1.28fr);
-    column-gap:28px;
+    grid-template-columns:minmax(200px,.88fr) minmax(0,1.12fr);
+    column-gap:30px;
   }
-  .about-person-name{margin-top:58px}
+  .about-person-portrait{margin-top:46px}
+  .about-person-name{margin:50px 0 26px}
+  .about-person-copy{max-width:360px}
 }
 @media(max-width:900px){
   .about-person-card{
